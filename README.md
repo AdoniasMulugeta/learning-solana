@@ -1,4 +1,4 @@
-# My journey learning the solana chain
+# My journey learning solana
 
 `Solana` is a blockchain project setout to improve transaction speed and minimize transaction fees. The main difference it has with `Ethereum` is it can validate much more transactions per second and the transaction fees are much smaller.
 
