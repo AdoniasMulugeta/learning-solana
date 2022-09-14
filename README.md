@@ -97,6 +97,7 @@ $ spl-token balance CBVUssufdzFFY2kkXJrvUGLXXEaaoyqcZUD7sgFxH9Qe
 ```
 
 We can also view our new token on solscan.io
-![sol scan picture](images/4e368cc7b14cdbad5c617f89c1a30d83acaf13f439d554a9f28337e75d9ad6d9.png)  
+ ![picture 4](images/f2d021d56c103f6d6881f2b6b1eaf774aec40e49553edaf95ecedf75261a636b.png)  
+
 
 
