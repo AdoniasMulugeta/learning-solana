@@ -35,32 +35,32 @@ $ spl-token create-token
 **Result**
 
 ``` console            
-Creating token CZ8WZopU1rtWuD4eNUtA8jsz36YqQedSGfu3gcSrZTCD
+Creating token CBVUssufdzFFY2kkXJrvUGLXXEaaoyqcZUD7sgFxH9Qe
 
-Address:  CZ8WZopU1rtWuD4eNUtA8jsz36YqQedSGfu3gcSrZTCD
+Address:  CBVUssufdzFFY2kkXJrvUGLXXEaaoyqcZUD7sgFxH9Qe
 Decimals: 9
 
-Signature: 4rb3qpJ8qx9ESM3kATVAQMVjntDez1bpjctK5w6HyU5tK3GefnshEsatCfJgKuxSfs2G9PnQFvcFpgegkqGtQLy9
+Signature: 5ZP6wyKWENQ7iTqW1yPDbXFShqL19AGXjNwXEYbqdsigoM7v9M7iUDQUV3DDhuCJRWhGq24Tppy3ZKNoXocCJZWw
 ```
-The command will return a token identifier `CZ8WZopU1rtWuD4eNUtA8jsz36YqQedSGfu3gcSrZTCD` which we'll use in the future to identify the token in other transactions.
+The command will return a token identifier `CBVUssufdzFFY2kkXJrvUGLXXEaaoyqcZUD7sgFxH9Qe` which we'll use in the future to identify the token in other transactions.
 
 ### **2. Create an Account**
 
 What we did above is create a token, now we need to have an account to store it. Here we need to mention which type of coin the account will hold, sort of like account currency in a bank.
 
 ```console
-$ spl-token create-account CZ8WZopU1rtWuD4eNUtA8jsz36YqQedSGfu3gcSrZTCD
+$ spl-token create-account CBVUssufdzFFY2kkXJrvUGLXXEaaoyqcZUD7sgFxH9Qe
 ```
 
 **Result**
 
 ```console
-Creating account 7nEsZsBvj3pxi3qjo1SPiUjeqssiqYCmyzfsyATiVai2
+Creating account 63xLS3Ya6zAWH9p4mFbJHJfhMEoZfQ1hbVHPa92L8T2U
 
-Signature: 5cDCvwp7kmmF5RbzP5goHvLS1MESZpugo1ENrxCvF6fR8TvrApSNCvJb3Ye9i7U8e3LmhHSpSMV15ZGFy63nV49a
+Signature: 3vbt4yGhdaBGoLNQUDTLZFttYqNZfbf5xCoiqHf4vd8vnxGn4EL1sTYUuKj2RoTWZ7FTbV1RGtCdh1eXeJaVx2AX
 ```
 
-We have now successfully created an account with the address `7nEsZsBvj3pxi3qjo1SPiUjeqssiqYCmyzfsyATiVai2`
+We have now successfully created an account with the address `63xLS3Ya6zAWH9p4mFbJHJfhMEoZfQ1hbVHPa92L8T2U`
 
 ### **3.Minting Coins**
 
@@ -69,17 +69,17 @@ Minting coins is the process of generating new coins. Only Authorized accounts c
 We can mint `1,000,000` coins using the command bellow.
 
 ```console
-$ spl-token mint CZ8WZopU1rtWuD4eNUtA8jsz36YqQedSGfu3gcSrZTCD 1000000
+$ spl-token mint CBVUssufdzFFY2kkXJrvUGLXXEaaoyqcZUD7sgFxH9Qe 1000000
 ```
 
 **Result**
 
 ```console
 Minting 1000000 tokens
-  Token: CZ8WZopU1rtWuD4eNUtA8jsz36YqQedSGfu3gcSrZTCD
-  Recipient: 7nEsZsBvj3pxi3qjo1SPiUjeqssiqYCmyzfsyATiVai2
+  Token: CBVUssufdzFFY2kkXJrvUGLXXEaaoyqcZUD7sgFxH9Qe
+  Recipient: 63xLS3Ya6zAWH9p4mFbJHJfhMEoZfQ1hbVHPa92L8T2U
 
-Signature: 2yLTWzCivuB8izSpns2MYiHDdKgXXu1iVc5jCPKgysAM7Zd7sr5dR4dFCRNf6qfGtYEjzcfTAFALPuT5j86ZTuyT
+Signature: 4axdYpSpcM4gwAbZJJmDgLiEJctHetcBiEPCcGPkgeuKxFQ99d843BXL2s7jzSTQAVcbeM9sd8FDZGB3krNmpKGb
 ```
 
 We have now Successfully minted `1,000,000` coins
@@ -88,10 +88,14 @@ We have now Successfully minted `1,000,000` coins
 We can check the balance (total supply) by running the following command
 
 ``` command
-$ spl-token balance CZ8WZopU1rtWuD4eNUtA8jsz36YqQedSGfu3gcSrZTCD
+$ spl-token balance CBVUssufdzFFY2kkXJrvUGLXXEaaoyqcZUD7sgFxH9Qe
 ```
 
 **Result**
 ```console
 1000000
 ```
+
+We can also view our new token on solscan.io
+![solscan.io screenshot](images/42e43ea55a400c7bfdbe34d9f163330a345364cdf0e5722852491873931cb67c.png)  
+
