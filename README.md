@@ -17,7 +17,7 @@ using the javascript SDK (@Solana/Web3.js)
 import {Connection, clusterApiUrl} from '@solana/web3.js';
 
 async function connect() {
-    const connection = new Connection(clusterApiUrl('devnet'));
+    const connection = new Connection(clusterApiUrl('devnet'), 'confirmed);
 }
 
 connect()
@@ -84,7 +84,7 @@ Signature: 4axdYpSpcM4gwAbZJJmDgLiEJctHetcBiEPCcGPkgeuKxFQ99d843BXL2s7jzSTQAVcbe
 
 We have now Successfully minted `1,000,000` coins
 
-### **4. Checking Balance***
+### **4. Checking Balance**
 We can check the balance (total supply) by running the following command
 
 ``` command
@@ -98,6 +98,87 @@ $ spl-token balance CBVUssufdzFFY2kkXJrvUGLXXEaaoyqcZUD7sgFxH9Qe
 
 We can also view our new token on solscan.io
  ![picture 4](images/f2d021d56c103f6d6881f2b6b1eaf774aec40e49553edaf95ecedf75261a636b.png)  
+
+### **5. Adding Metadata to your coin**
+You might want to make your token show up in user's wallets with a name, ticker, and image. Solana uses the [Token Metadata Program from Metaplex](https://docs.metaplex.com/token-metadata/specification#token-standards) to achieve this. 
+
+#### **5.1. Metadata Format**
+Since our token is a Fungible token we'll use the Fungible Token Standard, You can find below a sample of a metadata format.
+
+```json
+{
+  "name": "Coin name",
+  "symbol": "Symbol",
+  "image": "Image link"
+}
+```
+This file should be hosted somewhere and accessible via a URL.
+you can use github to host your json file. 
+
+You can find example [here](https://raw.githubusercontent.com/AdoniasMulugeta/learning-solana/main/metadata.json).
+
+#### **5.2. Attaching Metadata**
+To attach the metadata to the mint account, you need to install the following libraries 
+```console
+$ npm i -d @metaplex-foundation/mpl-token-metadata
+```
+Here's the code to add the metadata to a coin.
+
+```javascript
+    import { createCreateMetadataAccountV2Instruction, PROGRAM_ID} from '@metaplex-foundation/mpl-token-metadata';
+    import {Connection, Keypair, PublicKey, sendAndConfirmTransaction, Transaction} from "@solana/web3.js"
+    import fs from "fs"
+    async function main(){
+        const myKeyPair = Keypair.fromSecretKey(
+            new Uint8Array(
+                JSON.parse(fs.readFileSync("keypair.json"))
+            )
+        )
+        const seed1 = Buffer.from("metadata");
+        const seed2 = Buffer.from(PROGRAM_ID.toBytes());
+        const seed3 = Buffer.from(mintPublicKey.toBytes());
+
+        const [metadataPDA, _bump] = await PublicKey.findProgramAddress([
+            Buffer.from("metadata"),
+            Buffer.from(PROGRAM_ID.toBytes()),
+            Buffer.from(mintPublicKey.toBytes())
+        ], PROGRAM_ID)
+
+        const accounts = {
+            metadata: metadataPDA,
+            mint: mintPubKey,
+            mintAuthority: myKeyPair.publicKey,
+            payer: myKeyPair.publicKey,
+            updateAuthority: myKeyPair.publicKey
+        }
+
+        const txn = new Transaction().add(
+            createCreateMetadataAccountV2Instruction(accounts,
+                {
+                    createMetadataAccountArgsV2: {
+                        data: {
+                            name: "Ether Fiber", 
+                            symbol: "ETF",
+                            uri: "https://raw.githubusercontent.com/AdoniasMulugeta/learning-solana/main/metadata.json",
+                            sellerFeeBasisPoints: 0,
+                            creators: null,
+                            collection: null,
+                            uses: null
+                        },
+                        isMutable: true,
+                    }
+                }
+            )
+        )
+
+        const connection = new Connection("https://api.devnet.solana.com");
+        
+        return await sendAndConfirmTransaction(connection, txn, [myKeyPair]);
+    }
+
+    main()
+```
+
 
 
 
