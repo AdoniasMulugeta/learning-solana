@@ -1,10 +1,12 @@
 # My journey learning solana
 
-`Solana` is a blockchain project setout to improve transaction speed and minimize transaction fees. The main difference it has with `Ethereum` is it can validate much more transactions per second and the transaction fees are much smaller.
+**Solana** is a blockchain project setout to improve transaction speed and minimize transaction fees. The main difference it has with **Ethereum** is it can validate much more transactions per second and the transaction fees are much smaller.
 
-Solana Uses `Proof of History` (A Modified form of Proof of Stake) to reach consensus on transactions. 
+Solana Uses Proof of Stake and Proof of History to reach consensus on transactions. Which simply means **transactions on Solana are verifiably ordered without all nodes needing to agree simultaneously.**
 
-Transactions are validated using the timestamp data but Validators still need to stake some amount of `SOL` (the native coin on the chain) to be able to validate and submit transactions.
+Transactions are validated using the timestamp data but Validators still need to stake some amount of **SOL** (the native coin on the chain) to be able to validate and submit transactions.
+
+Solana is **Single-Chain**. Other new blockchains, have similar speed by using sharding, creating sidechains that tie back into the main Ethereum blockchain. Solana does everything on one single chain, in a single state. 
 
 ## Learning Projects
 ---
